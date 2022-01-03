@@ -341,18 +341,22 @@
     if (!(numeros instanceof Array))
     return console.log(`El valor ${numeros} no es un Array de Numeros`);
 
-    let ascendente =[7, 5,7,8,6];
-    ascendente.sort(function(a, b){return a-b});
+    let numero=numeros;
+    let ascendente=numeros.map(el=>el*1);
+    let descendente=numeros.map(el=>el*1);
     
-    let descendente = [7, 5,7,8,6];
-    descendente.sort(function(a, b){return b-a});
-    
-    console.info(`los numeros ingresados son ${numeros} de forma ascendente :${ascendente} y de forma descendente :${descendente}`);
+    console.log({
+        numero,
+    ascendente,
+    descendente
+  });
     };
     ArrayObjet([7, 5,7,8,6]);  
 
 
     /* 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true]  */
+
+  
 
 
 
