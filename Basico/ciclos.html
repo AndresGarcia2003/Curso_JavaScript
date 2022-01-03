@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CICLOS</title>
+</head>
+<body>
+    <h1>CICLOS</h1>
+    <script>
+        let contador=0;
+
+        while(contador<10){
+            console.log(contador);
+            contador++;
+        }
+
+        do {
+            console.log(contador);
+            contador++;
+        } while (contador<10);
+
+        for (let i = 0; i < 10; i++) {
+            console.log("for"+ i);
+            
+        }
+        let numero=[10,20,30,40,50,60,70,90];
+
+        for (let i = 0; i < numero.length; i++) {
+            console.log(numero[i])
+            
+        }
+
+        //FOR - IN//
+        const jon={
+            nombre:"Andres",
+            apellido:"Garcia",
+            edad:18
+        }
+        for (const propiedad in jon) {
+            console.log(`key ${propiedad}, value ${jon[propiedad]}`);
+        }
+
+        //FOR - OF//
+        for (const elemneto of numero) {
+            console.log(elemneto);
+        }
+    </script>
+</body>
+</html>
