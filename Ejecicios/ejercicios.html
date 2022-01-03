@@ -344,6 +344,9 @@
     let numero=numeros;
     let ascendente=numeros.map(el=>el*1);
     let descendente=numeros.map(el=>el*1);
+    ascendente.sort((a,b)=>b-a);
+    descendente.sort((a,b)=>a-b);
+    numero
     
     console.log({
         numero,
