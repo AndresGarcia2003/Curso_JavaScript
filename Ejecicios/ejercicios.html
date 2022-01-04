@@ -373,13 +373,42 @@
 
 
     /* 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true]  */
+    const ArrayEliminar = (datos = undefined) => {
+    if (datos === undefined)
+    return console.log("Debes Ingresar un array de numeros");
 
+    if (datos.length === 0) return console.log("El array ingresado está Vacio");
 
-
-
+    if (!(datos instanceof Array))
+    return console.log(`El valor ${datos} no es un Array de Numeros`);
+    
+    let recorte = [...new Set(datos)]
+   
+    console.log({
+        recorte,
+    });
+    };
+    ArrayEliminar(["x", 10, "x", 2, "10", 10, true, true]);
 
     /* 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5 */
+    const ArrayPromedio = (suma = undefined) => {
+    if (suma === undefined)
+    return console.log("Debes Ingresar un array de numeros");
 
+    if (suma.length === 0) return console.log("El array ingresado está Vacio");
+
+    if (!(suma instanceof Array))
+    return console.log(`El valor ${suma} no es un Array de Numeros`);
+    
+    let sum = suma.reduce((previous, current) => current += previous);
+    let promedio = sum /suma.length;
+   
+    console.log({
+        promedio,
+    });
+    console.log(`El promedio es: ${promedio}`);
+    };
+    ArrayPromedio([9,8,7,6,5,4,3,2,1,0]);
 
 
     /* 27) Programa una clase llamada Pelicula.
