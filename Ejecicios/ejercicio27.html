@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio27</title>
+</head>
+<body>
+    <h1>EJRCICIO 27</h1>
+    <script>
+        /* 27) Programa una clase llamada Pelicula.
+        La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+          - Todos los datos del objeto son obligatorios.
+          - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 7 restantes números.
+          - Valida que el título no rebase los 100 caracteres.
+          - Valida que el director no rebase los 50 caracteres.
+          - Valida que el año de estreno sea un número entero de 4 dígitos.
+          - Valida que el país o paises sea introducidos en forma de arreglo.
+          - Valida que los géneros sean introducidos en forma de arreglo.
+          - Valida que los géneros introducidos esten dentro de los géneros aceptados*.
+          - Crea un método estático que devuelva los géneros aceptados*.
+          - Valida que la calificación sea un número entre 0 y 10 pudiendo ser decimal de una posición.
+          - Crea un método que devuelva toda la ficha técnica de la película.
+          - Apartir de un arreglo con la información de 3 películas genera 3 instancias de la clase de forma automatizada e imprime la ficha técnica de cada película.
+        * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+        */
+       class pelicula{
+        constructor({id,titulo,director,añoEstreno,paisOrigen,genero,calificaciones}){
+               this.id=id;
+               this.titulo=titulo;
+               this.director= director;
+               this.añoEstreno=añoEstreno;
+               this.paisOrigen=paisOrigen;
+               this.genero=genero;
+               this.calificaciones=calificaciones;
+
+               this.validarIMDB(id);
+               this.validarTitulo(titulo);
+               this.validarDirector(director);
+            //    this.validarAño(añoEstreno);
+            //    this.validarPais(paisOrigen);
+            //    this.validarGeneros(genero);
+           }
+           validarCadena(propiedad,valor){
+              if(!valor)return console.warn(`No has introducido ningun ${propiedad}`);
+               if(typeof valor!=="string")return console.warn(`El ${propiedad}: ${valor} no es una cadena de texto.`);
+
+              return true;
+           }
+
+           validarLongitud(propiedad,valor,longitud){
+           if(!valor)return console.warn(`No has introducido ningun ${propiedad}`);
+           if(valor.length>longitud)return console.warn(`La longitud de ${propiedad} es mayor a ${longitud} caracteres.`);
+           return true;
+            }
+
+            validarArreglo(propiedad,valor){
+            if(!valor)return console.warn(`No has introducido ningun ${propiedad}`);
+            if(!(valor instanceof Array)) return console.warn(`El dato ${valor} introducido no es un arreglo`);
+            if(valor.length===0)return console.warn(`El arreglo ${valor} no puede estar vacio`);
+            for (let i = 0; i < valor.length; i++) {
+              if(typeof valor[i]!=="string") return console.warn(`El arreglo ${valor} debe contener unicamente texto.`);
+            }
+            return true;
+            }
+
+           validarIMDB(id){
+            if(!(/^([a-z]){2}([0-9]){7}$/.test(id))){  
+            console.error(`${id} no es un IMDB id valido.`);
+             }else{
+                console.log(`El id ${id} de la pleicula ingresada es correcto`)
+             }
+            }
+            validarTitulo(titulo){
+                if(this.validarCadena("titulo",titulo))
+                if (this.validarLongitud("titulo",titulo,100)){
+                    console.log(`El titulo :${titulo} de la pleicula ingresada es correcto`);
+                }
+             }
+            validarDirector(director){
+                if(this.validarCadena("director",director))
+                if (this.validarLongitud("director",director,50)){
+                    console.log(`El director ${director} de la pleicula ${this.titulo} ingresada es correcto`);
+                }    
+            } 
+        }   
+
+       const ejemplo=new pelicula ({
+            id:"tt1234567",
+            titulo: "Los jurados",
+            director: "Cahrles Orion",
+            añoEstreno:1958,
+            paisOrigen:["hola"],
+            genero:["hola"]
+        })
+        // console.log(ejemplo);
+    </script>
+</body>
+</html>
