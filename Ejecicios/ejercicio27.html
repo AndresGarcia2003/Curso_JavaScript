@@ -38,9 +38,9 @@
                this.validarIMDB(id);
                this.validarTitulo(titulo);
                this.validarDirector(director);
-            //    this.validarAño(añoEstreno);
-            //    this.validarPais(paisOrigen);
-            //    this.validarGeneros(genero);
+               this.validarAño(añoEstreno);
+               this.validarPais(paisOrigen);
+               this.validarGeneros(genero);
            }
            validarCadena(propiedad,valor){
               if(!valor)return console.warn(`No has introducido ningun ${propiedad}`);
@@ -83,16 +83,33 @@
                 if (this.validarLongitud("director",director,50)){
                     console.log(`El director ${director} de la pleicula ${this.titulo} ingresada es correcto`);
                 }    
+            }
+            validarAño(añoEstreno){
+                if (!(/^([0-9]){4}$/.test(añoEstreno))){
+                    console.error(`${añoEstreno} no es un año valido.`);
+             }else{
+                console.log(`En el año ${añoEstreno} se estreno la pleicula ${this.titulo} del director ${this.director} `);
+             } 
             } 
+            validarPais(paisOrigen){
+                if (this.validarArreglo("paisOrigen",paisOrigen)){
+                console.log(`En el año ${this.añoEstreno} se estreno la pleicula ${this.titulo} del director ${this.director} dirijida en ${paisOrigen} `);
+                }   
+            }
+            validarGeneros(genero){
+                if (this.validarArreglo("paisOrigen",genero)){
+                console.log(`En el año ${this.añoEstreno} se estreno la pleicula ${this.titulo} del director ${this.director} dirijida en ${this.paisOrigen} denominada con el genero ${genero} `);
+            }
+        } 
         }   
 
        const ejemplo=new pelicula ({
             id:"tt1234567",
             titulo: "Los jurados",
             director: "Cahrles Orion",
-            añoEstreno:1958,
-            paisOrigen:["hola"],
-            genero:["hola"]
+            añoEstreno:2015,
+            paisOrigen:["Corea de sur"],
+            genero:["Accion"]
         })
         // console.log(ejemplo);
     </script>
