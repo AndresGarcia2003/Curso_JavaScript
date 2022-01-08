@@ -25,6 +25,35 @@
           - Apartir de un arreglo con la información de 3 películas genera 3 instancias de la clase de forma automatizada e imprime la ficha técnica de cada película.
         * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
         */
+       const validarGenerosAceptados=["Accion", 
+       "Adulto", 
+       "Aventura", 
+       "Animacion", 
+       "Biografia", 
+       "Comedia", 
+       "Crimen", 
+       "Documental", 
+       "Drama", 
+       "Familia", 
+       "Fantasia", 
+       "Cine negro", 
+       "Concursos",
+       "Historia", 
+       "Terror", 
+       "Musical", 
+       "Música", 
+       "Misterio", 
+       "Noticias", 
+       "Reality TV",
+       "Romance", 
+       "Ciencia ficcion" , 
+       "Corto", 
+       "Deportivo", 
+       "Programa de entrevistas", 
+       "Suspenso", 
+       "Guerra",
+       "Western"];
+
        class pelicula{
         constructor({id,titulo,director,añoEstreno,paisOrigen,genero,calificaciones}){
                this.id=id;
@@ -41,6 +70,7 @@
                this.validarAño(añoEstreno);
                this.validarPais(paisOrigen);
                this.validarGeneros(genero);
+               this.validarCalificaciones(calificaciones);
            }
            validarCadena(propiedad,valor){
               if(!valor)return console.warn(`No has introducido ningun ${propiedad}`);
@@ -68,50 +98,126 @@
            validarIMDB(id){
             if(!(/^([a-z]){2}([0-9]){7}$/.test(id))){  
             console.error(`${id} no es un IMDB id valido.`);
-             }else{
-                console.log(`El id ${id} de la pleicula ingresada es correcto`)
-             }
+            }
             }
             validarTitulo(titulo){
                 if(this.validarCadena("titulo",titulo))
-                if (this.validarLongitud("titulo",titulo,100)){
-                    console.log(`El titulo :${titulo} de la pleicula ingresada es correcto`);
-                }
+                if (this.validarLongitud("titulo",titulo,100)){}
              }
             validarDirector(director){
                 if(this.validarCadena("director",director))
-                if (this.validarLongitud("director",director,50)){
-                    console.log(`El director ${director} de la pleicula ${this.titulo} ingresada es correcto`);
-                }    
+                if (this.validarLongitud("director",director,50)){}    
             }
             validarAño(añoEstreno){
                 if (!(/^([0-9]){4}$/.test(añoEstreno))){
                     console.error(`${añoEstreno} no es un año valido.`);
-             }else{
-                console.log(`En el año ${añoEstreno} se estreno la pleicula ${this.titulo} del director ${this.director} `);
-             } 
+                }
             } 
             validarPais(paisOrigen){
-                if (this.validarArreglo("paisOrigen",paisOrigen)){
-                console.log(`En el año ${this.añoEstreno} se estreno la pleicula ${this.titulo} del director ${this.director} dirijida en ${paisOrigen} `);
-                }   
+                if (this.validarArreglo("paisOrigen",paisOrigen)){}   
             }
             validarGeneros(genero){
-                if (this.validarArreglo("paisOrigen",genero)){
-                console.log(`En el año ${this.añoEstreno} se estreno la pleicula ${this.titulo} del director ${this.director} dirijida en ${this.paisOrigen} denominada con el genero ${genero} `);
+                if (genero === undefined)
+                return console.warn("Falto insertar el genero de la película.");
+                if (this.validarArreglo("genero",genero)){};
+                const validarGenerosAceptadosMin = validarGenerosAceptados.map((a) => a.toLowerCase());
+                let generoMin = genero.map((b) => b.toLowerCase());
+                   for (let i = 0; i < genero.length; i++) {
+                    if (!validarGenerosAceptadosMin.includes(generoMin[i]))
+                        return console.error(
+                        `Has introducido un género de películas no aceptado. Los generos aceptados son ${validarGenerosAceptados}.`
+                    );
+                }        
+            
             }
-        } 
-        }   
+            static validarGenerosAceptados() {
+            console.info(`Estos son los géneros aceptados: ${generosAceptados}.`);
+           }
+           validarCalificaciones(calificaciones){
+            if (calificaciones === undefined)
+               return console.warn("Falto insertar la calificación de la película");
+               let calificacionStr = calificaciones.toString();
+            if (typeof calificaciones !== "number")
+               return console.error("Insertastes un dato que NO es un número.");
+            if (calificacionStr.length > 3)
+               return console.error("Inserta una calificación válida con 1 solo decimal.");
+            if (calificaciones < 0 || calificaciones > 10)
+               console.error("Inserta una calificación válida entre el 0 al 10.");
+            if (Math.sign(calificaciones) === -1)
+               return console.error("No se admiten números negativos. Inserta una calificación válida.");
+           }
 
-       const ejemplo=new pelicula ({
-            id:"tt1234567",
-            titulo: "Los jurados",
-            director: "Cahrles Orion",
-            añoEstreno:2015,
-            paisOrigen:["Corea de sur"],
-            genero:["Accion"]
-        })
-        // console.log(ejemplo);
+           fichaTecnica() {
+            if (
+            !this.id ||
+            !this.titulo ||
+            !this.director ||
+            !this.añoEstreno ||
+            !this.paisOrigen ||
+            !this.genero ||
+            !this.calificaciones
+        ){
+        return console.warn("Todos los datos son obligatorios. Son todos los siguientes: ID, Título, Director, Año, Paises, Genero, Calificacion.");
+       } else {
+      let generO = this.genero.map(function (x) {
+        return x[0].toUpperCase() + x.slice(1);
+      });
+      let generOSeparado = generO.join(", ");
+      return console.info(
+        `Título: ${this.titulo}.\nID IMDB: ${this.id}. \nAño: ${this.añoEstreno}. \nDirector: ${this.director}. \nPaís: ${this.paisOrigen}. \nGénero: ${generOSeparado}. \nCalificación: ${this.calificaciones}`
+      );
+    }
+         
+        }
+    }
+
+const cenicienta = new pelicula({
+  id: "tt1661199",
+  titulo: "Cinderella",
+  director: "Kenneth Branagh",
+  añoEstreno: 1995,
+  paisOrigen: ["España"],
+  genero: ["Drama", "Familia", "fantasia"],
+  calificaciones: 10,
+});
+cenicienta.fichaTecnica();
+
+const tresPeliculas = [
+  {
+    id: "tt0120338",
+    titulo: "Titanic",
+    director: "James Cameron",
+    añoEstreno: 1997,
+    paisOrigen: ["Spain"],
+    genero: ["Drama", "Romance"],
+    calificaciones: 7.8,
+  },
+  {
+    id: "tt0046183",
+    titulo: "Host",
+    director: "Rob Savage",
+    añoEstreno: 2020,
+    paisOrigen: ["Reino Unido"],
+    genero: ["Terror", "Misterio"],
+    calificaciones: 5.9,
+  },
+  {
+    id: "tt0088763",
+    titulo: "Parasito",
+    director: "Bong Joon-ho",
+    añoEstreno: 2019,
+    paisOrigen: ["Corea del sur"],
+    genero: ["Suspenso",  "Drama"],
+    calificaciones: 8.0,
+  },
+];
+
+tresPeliculas.forEach((x) => {
+  let triPack = new pelicula(x);
+  triPack.fichaTecnica();
+});
+
+    
     </script>
 </body>
 </html>
