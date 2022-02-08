@@ -132,8 +132,8 @@ img,
     color: var(--second-color);
     background-color: var(--main-modal-color);
 }
-.seccion1{
-  font-family: fantasy;
+.section{
+    font-family: monospace;
 }
 .boton_personalizado{
     text-decoration: none;
@@ -148,5 +148,21 @@ img,
 .boton_personalizado:hover{
     color: #1883ba;
     background-color: #ffffff;
+}
+
+/* Eventos del Teclado */
+
+.stage {
+    display: flex;
+    min-height: 50vh;
+    background-color: var(--second-color);
+}
+  
+.ball {
+    margin: auto;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--main-color);
 }
   
