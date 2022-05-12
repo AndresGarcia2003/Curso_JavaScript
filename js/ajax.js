@@ -1,4 +1,4 @@
-/* **********     Curso JavaScript: 106. AJAX: Objeto XMLHttpRequest - #jonmircha     ********** */
+/* **********  106. AJAX: Objeto XMLHttpRequest ********** */
 (() => {
     const xhr = new XMLHttpRequest(),
       $xhr = document.getElementById("xhr"),
@@ -38,7 +38,7 @@
     xhr.send();
   })();
   
-  /* **********     Curso JavaScript: 107. AJAX: API Fetch - #jonmircha     ********** */
+  /* **********  107. AJAX: API Fetch  ********** */
   (() => {
     const $fetch = document.getElementById("fetch"),
       $fragment = document.createDocumentFragment();
@@ -71,7 +71,7 @@
       });
   })();
   
-  /* **********     Curso JavaScript: 108. AJAX: API Fetch + Async-Await - #jonmircha     ********** */
+  /* **********  108. AJAX: API Fetch + Async-Await  ********** */
   (() => {
     const $fetchAsync = document.getElementById("fetch-async"),
       $fragment = document.createDocumentFragment();
@@ -105,7 +105,7 @@
     getData();
   })();
   
-  /* **********     Curso JavaScript: 109. AJAX: Librería Axios - #jonmircha     ********** */
+  /* ********** 109. AJAX: Librería Axios  ********** */
   (() => {
     const $axios = document.getElementById("axios"),
       $fragment = document.createDocumentFragment();
@@ -135,7 +135,7 @@
       });
   })();
   
-  /* **********     Curso JavaScript: 110. AJAX: Librería Axios + Async-Await - #jonmircha     ********** */
+  /* **********  110. AJAX: Librería Axios + Async-Await  ********** */
   (() => {
     const $axiosAsync = document.getElementById("axios-async"),
       $fragment = document.createDocumentFragment();
